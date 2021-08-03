@@ -1,0 +1,216 @@
+$color-white: #fff
+$color-brown-navfoo: #6C504E
+$color-brown-bg: #E9E5DE
+$color-brown-area: #F3F0E9
+$color-green-btn: #87c357
+$color-green-btn2: #427C64
+$color-grey: #bbb
+$color-black: #54504A
+/*-- responsive media queries --*/
+@media screen and (max-width: 1920px)
+    //導覽列選單按鈕隱藏
+    .navbar_btn
+        display: none
+@media screen and (max-width: 1200px)
+    .navbar, main, footer .footer_content
+        width: 85%
+    //站外鏈結和top
+    .externalLink
+        right: 2vw
+        .elinks
+            display: none
+        .elinks.open
+            display: block
+        .show
+            display: block
+@media screen and (max-width: 992px)
+    .mark
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-color: rgba($color-black, 0.7)
+        z-index: 7
+    .hidden
+        display: none
+    .navbar, main, footer .footer_content
+        width: 90%
+    #search
+        input
+            width: 80%
+    //導覽列選單按鈕出現
+    .navbar_btn
+        display: block
+    .shopcart
+        margin-right: 25px
+    .navbar_item
+        .menu
+            position: absolute
+            background-color: $color-brown-navfoo
+            top: 0
+            right: 0
+            padding-top: 0.5rem
+            width: 25%
+            height: 1200px
+            text-align: center
+            z-index: 8
+            .navbar_btn
+                float: right
+                margin-right: 50px
+                margin-bottom: 20px
+            ul.landscape
+                clear: right
+                display: flex
+                flex-direction: column
+            li
+                padding: 15px
+    //茶知識
+    .news
+        .item
+            max-height: 250px
+            min-height: 250px
+    //modal
+    #modal
+        .teaInfo
+            min-width: 70%
+@media screen and (max-width: 900px)
+    //商品資訊
+    #products
+        #tab_inner
+            .product_list
+                .product_text
+                    display: block
+                    p
+                        margin-left: 10px
+    //modal
+    #modal
+        .teaInfo
+            min-width: 80%
+            .infoRight
+                .infoText
+                    .addQty
+                        .txt
+                            width: 2rem
+                        input.txt.addnum
+                            width: 2.5rem
+@media screen and (max-width: 768px)
+    //h2設置
+    .area, .area_brand, #modal>.teaInfo>.infoText >.infoRight
+        h2
+            font-size: 1.3rem
+    //茶知識與商品資訊
+    .item
+        max-width: 30%
+        min-width: 30%
+    .navbar_item
+        .menu
+            width: 30%
+    span.slidebtn
+        left: 0.3%
+        &:nth-of-type(2)
+            left: 96%
+@media screen and (max-width: 620px)
+    //導覽列
+    .navbar_item
+        .menu
+            width: 35%
+            .navbar_btn
+                margin-right: 45px
+    //品牌
+    .brand
+        flex-direction: column
+        padding-bottom: 5%
+        .brand_img, .brand_text
+            width: 100%
+        .brand_img>img
+            border-top-left-radius: 3px
+            border-bottom-right-radius: 0px
+    //店鋪與客服
+    .shopinfoContact
+        flex-direction: column
+        #shop_info, #contact
+            width: 90%
+        #shop_info
+            margin-bottom: 30px
+            iframe
+                width: 95%
+        #contact
+            .contact_all
+                width: 95%
+    //modal
+    #modal
+        .teaInfo
+            min-width: 70%
+            max-height: 85%
+            flex-direction: column
+            padding: 5vw 4vw
+            .infoLeft, .infoRight
+                width: 100%
+            .infoLeft
+                margin-bottom: 30px
+            .infoRight
+                p
+                    line-height: 1.5
+                    margin: 10px 0
+                .addQty
+                    margin: 10px 0
+                    .txt
+                        width: 3vw
+                    input.addnum
+                        width: 4vw
+@media screen and (max-width: 540px)
+    .navbar_item
+        .menu
+            width: 45%
+            .navbar_btn
+                margin-right: 40px
+    //area
+    .area, #news
+        margin-bottom: 6vw
+        padding-top: 4vw
+    .area_brand
+        padding: 0px
+        h2
+            padding-top: 4vw
+    .carousel
+        margin-bottom: 6vw
+    //茶知識與商品資訊
+    .news, #tab_inner
+        padding-left: 2%
+    .item
+        max-width: 45%
+        min-width: 45%
+        margin: 0 2.5%
+    //左右按鈕
+    span.slidebtn
+        left: 0.3%
+        &:nth-of-type(2)
+            left: 95%
+@media screen and (max-width: 480px)
+    //導覽列
+    .navbar_item
+        .menu
+            width: 55%
+            .navbar_btn
+                margin-right: 30px
+@media screen and (max-width: 370px)
+    //茶知識與商品資訊
+    .news, #tab_inner
+        padding-left: 1%
+    .news>.item
+        max-height: auto
+        min-height: 270px
+    .item
+        max-width: 85%
+        min-width: 85%
+        margin: 3% 7% 3% 8%
+    //左右按鈕
+    span.slidebtn
+        left: 0.5%
+        &:nth-of-type(2)
+            left: 92%
+    //modal
+    #modal
+        .teaInfo
+            min-width: 85%

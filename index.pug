@@ -1,0 +1,204 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title 雲華
+        link(rel="stylesheet" href="./css/reset.css")
+        link(rel="stylesheet" href="./css/style.css")
+        link(rel="stylesheet" href="./css/rwd.css")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous")
+    body
+        .container#top
+            .externalLink
+                .elinks
+                    a(href="#") 
+                        i(class="fab fa-facebook-square")
+                .elinks
+                    a(href="#") 
+                        i(class="fab fa-instagram")
+                .elinks
+                    a(href="#") 
+                        i(class="fab fa-youtube")
+                .elinks
+                    a(href="#top") 
+                        i(class="fas fa-arrow-up")
+                .elinks.open
+                    a(href="#")
+                        i(class="fa fa-angle-double-up")
+            
+            .mark
+            nav
+                .navbar
+                    .navbar_item
+                        .mark
+                        .logo 雲華
+                        .menu
+                            .navbar_btn
+                                .line.line4
+                                .line.line5
+                            ul.landscape
+                                li.navitem 
+                                    a(href="#news") 茶知識
+                                li.navitem 
+                                    a(href="#brand_into") 品牌介紹
+                                li.navitem 
+                                    a(href="#products") 商品資訊
+                                li.navitem 
+                                    a(href="#shop_info") 店舖資訊
+                                li.navitem 
+                                    a(href="#contact") 客服表單
+                    .navbar_icon
+                        .searchCart
+                            #search
+                                input(type="text" placeholder="search..." style="display: none;")
+                                i(class="fas fa-search")
+                            .shopcart
+                                i(class="fas fa-shopping-cart")
+                        .navbar_btn
+                            .line.line1
+                            .line.line2
+                            .line.line3
+
+            main
+                section.carousel
+                    .slider
+                        .slides 
+                            //-radio btn 
+                            input#radio1(type="radio" name="radio-btn" checked)
+                            input#radio2(type="radio" name="radio-btn")
+                            input#radio3(type="radio" name="radio-btn")
+                            //- slide image
+                            .slide.first
+                                img(src="./image/carousel1.jpg" alt="1")
+                            .slide
+                                img(src="./image/carousel2.jpg" alt="2")
+                            .slide
+                                img(src="./image/carousel3.jpg" alt="3")
+                            //- automatic navigation start
+                            .navigation-auto
+                                .auto-btn1
+                                .auto-btn2
+                                .auto-btn3
+                            //- manual navigation
+                            .navigation-manual
+                                label.manual-btn(for="radio1") 
+                                label.manual-btn(for="radio2") 
+                                label.manual-btn(for="radio3") 
+                //- 茶知識
+                section#news.area
+                    h2 茶知識
+                    span.slidebtn.slidebtn_left &#139;
+                    span.slidebtn.slidebtn_right &#155;
+                    .news
+                        .item.item1(v-for="new in news")
+                            .news_img
+                                img(v-bind:src="new.img" v-bind:alt="new.title")
+                            .news_title 
+                                h5 {{new.title}}
+                                span {{new.date}}
+                            p {{new.content.substring(0, 20)}}...
+                            .data_about
+                                i.fas.fa-leaf
+                                .about_text(style="display: none;")
+                                    //- <?xml(version="1.0" encoding="utf-8")?>
+                                    //- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)
+                                    svg(version="1.1" id="triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 70.95 12.21" style="enable-background:new 0 0 70.95 12.21;" xml:space="preserve")
+                                        polygon.triangle(points="70.81,0.03 60.81,12.21 56.05,0 ")
+                                    p 圖片來源： 
+                                        a(v-bind:href="new.img_href" target="_blank") {{new.img_web}} 
+                                    p 文章來源： 
+                                        a(v-bind:href="new.content_href" target="_blank") {{new.content_author}}
+                //- 品牌介紹
+                section#brand_into.area.area_brand
+                    .brand 
+                        .brand_img 
+                            img(src="./image/teabush2.jpg" alt="")
+                        .brand_text
+                            h2 品牌介紹
+                            p 唐代詩人皮日休《寒日書齋即事》一詩有云：「深夜數甌唯柏葉，清晨一器是雲華。」。好山好水出好茶，植於山顛雲霧處之茶，無染上凡間之濁，可稱上茶中之上品。
+                //- 商品資訊
+                .productInfo 
+                    section#products.area 
+                        h2 商品資訊
+                        ul#tabs
+                            li(v-for="class in teadata") {{class.className}}
+                        #tab_inner
+                            .tab_content(v-for="(classid, class) in teadata") 
+                                span.slidebtn.slidebtn_left &#139;
+                                span.slidebtn.slidebtn_right &#155;
+                                .product_list
+                                    .item.product_item(v-for="(teaid, tea) in class.products" v-bind:class="class.tabid")
+                                        .product_img
+                                            img(v-bind:src="tea.img[0]" alt="{{tea.name}}")
+                                            .product_addcart(v-on:click="openProductInfo(classid, teaid);") 購買
+                                        .product_text
+                                            h5(v-on:click="openProductInfo(classid, teaid);") {{tea.name}}
+                                            p NT.{{tea.price}}
+                    //- 商品詳細資訊
+                    dialog#modal(style="display:none;")
+                        .modalBg 
+                        .teaInfo
+                            .closePage(v-on:click="closeProductInfo();")
+                                .line.line1 
+                                .line.line2
+                            .infoLeft
+                                .infoImg
+                                    .imgBig
+                                        img#bigimg(src="./image/teapot1.jpg", alt="") 
+                                    .imgThumbnail
+                                        .thumbnailimg
+                                            img(src="./image/teapot1.jpg", alt="")
+                                        .thumbnailimg
+                                            img(src="./image/teapot2.jpg", alt="")
+                                        .thumbnailimg
+                                            img(src="./image/teapot1.jpg", alt="")
+                            .infoRight
+                                .infoText 
+                                    h2 蜜香紅茶
+                                    p.teaPrice NT$ 1,300
+                                    p.teaIntro 嚴選蜜香紅茶，茶包20入
+                                    p.teaIntro 全館滿NT$ 5,000免運費
+                                    .addQty 
+                                        .txt.subbtn -
+                                        input.txt.addnum(type="text" value="1" oninput="value=value.replace(/[^\\d]/g,'');") 
+                                        .txt.addbtn +
+                                    button.addCartbtn 加入購物車
+                //- 店舖資訊和客服表單
+                .shopinfoContact.area
+                    //- 店舖資訊
+                    section#shop_info 
+                        h2 店舖資訊
+                        p 電話：04-00000000
+                        p 傳真：04-00000000 
+                        p 營業時間：周一至周六 上午10:00至下午7:30
+                        p 聯絡信箱：service@teashop.com
+                        p 地址：400 台中市XX區XX路XX號  
+                        iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465744.23062635935!2d120.67567951144393!3d24.219846774163198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917dff97922ef%3A0x87523ee47ea6447f!2z5Y-w5Lit5biC!5e0!3m2!1szh-TW!2stw!4v1624064257091!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy")
+                    //- 客服表單
+                    section#contact 
+                        h2 客服表單
+                        .contact_all
+                            select#contact_class(name="contact_class")
+                                option(value="1") 商品相關
+                                option(value="2") 訂單相關
+                                option(value="3") 退換貨
+                            input#contact_subject(type="text" name="subject" placeholder="主旨")
+                            input#user_email(type="email" name="email" placeholder="信箱" required)
+                            input#user_name(type="text" name="name" placeholder="姓名" required)
+                            input#user_phone(type="tel" name="phone" placeholder="電話" required)
+                            textarea#contact_content(name="content" placeholder="內容" rows="6" required)
+                            button.btn_submit 送出
+                            button.btn_reset(onclick="formReset();") 重填
+            footer 
+                .footer_content 
+                    p copyright © 資料、圖片、文章來源皆來自網路，僅用來做為學習用途。
+                    p 圖片來自
+                        a(href="https://unsplash.com/" target="_blank") Unsplash
+                        |，文章來自
+                        a(href="https://zh.wikipedia.org" target="_blank") 維基百科
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js")
+            script(type="text/javascript" src="./js/teadata.js") 
+            script(type="text/javascript" src="./js/newsdata.js") 
+            script(type="text/javascript" src="./js/script.js") 

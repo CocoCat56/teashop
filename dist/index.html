@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雲華</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/rwd.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container" id="top">
+      <div class="externalLink">
+        <div class="elinks"><a href="#"> <i class="fab fa-facebook-square"></i></a></div>
+        <div class="elinks"><a href="#"> <i class="fab fa-instagram"></i></a></div>
+        <div class="elinks"><a href="#"> <i class="fab fa-youtube"></i></a></div>
+        <div class="elinks"><a href="#top"> <i class="fas fa-arrow-up"></i></a></div>
+        <div class="elinks open"><a href="#"><i class="fa fa-angle-double-up"></i></a></div>
+      </div>
+      <div class="mark"></div>
+      <nav>
+        <div class="navbar">
+          <div class="navbar_item">
+            <div class="mark"></div>
+            <div class="logo">雲華</div>
+            <div class="menu">
+              <div class="navbar_btn">
+                <div class="line line4"></div>
+                <div class="line line5"></div>
+              </div>
+              <ul class="landscape">
+                <li class="navitem"> <a href="#news">茶知識</a></li>
+                <li class="navitem"> <a href="#brand_into">品牌介紹</a></li>
+                <li class="navitem"> <a href="#products">商品資訊</a></li>
+                <li class="navitem"> <a href="#shop_info">店舖資訊</a></li>
+                <li class="navitem"> <a href="#contact">客服表單</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="navbar_icon">
+            <div class="searchCart">
+              <div id="search">
+                <input type="text" placeholder="search..." style="display: none;"><i class="fas fa-search"></i>
+              </div>
+              <div class="shopcart"><i class="fas fa-shopping-cart"></i></div>
+            </div>
+            <div class="navbar_btn">
+              <div class="line line1"></div>
+              <div class="line line2"></div>
+              <div class="line line3"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <section class="carousel">
+          <div class="slider">
+            <div class="slides"> 
+              <input id="radio1" type="radio" name="radio-btn" checked>
+              <input id="radio2" type="radio" name="radio-btn">
+              <input id="radio3" type="radio" name="radio-btn">
+              <div class="slide first"><img src="./image/carousel1.jpg" alt="1"></div>
+              <div class="slide"><img src="./image/carousel2.jpg" alt="2"></div>
+              <div class="slide"><img src="./image/carousel3.jpg" alt="3"></div>
+              <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+              </div>
+              <div class="navigation-manual">
+                <label class="manual-btn" for="radio1"> </label>
+                <label class="manual-btn" for="radio2"> </label>
+                <label class="manual-btn" for="radio3"> </label>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="area" id="news">
+          <h2>茶知識</h2><span class="slidebtn slidebtn_left">&#139;</span><span class="slidebtn slidebtn_right">&#155;</span>
+          <div class="news">
+            <div class="item item1" v-for="new in news">
+              <div class="news_img"><img v-bind:src="new.img" v-bind:alt="new.title"></div>
+              <div class="news_title"> 
+                <h5>{{new.title}}</h5><span>{{new.date}}</span>
+              </div>
+              <p>{{new.content.substring(0, 20)}}...</p>
+              <div class="data_about"><i class="fas fa-leaf"></i>
+                <div class="about_text" style="display: none;">
+                  <svg version="1.1" id="triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 70.95 12.21" style="enable-background:new 0 0 70.95 12.21;" xml:space="preserve">
+                    <polygon class="triangle" points="70.81,0.03 60.81,12.21 56.05,0 "></polygon>
+                  </svg>
+                  <p>圖片來源： <a v-bind:href="new.img_href" target="_blank">{{new.img_web}} </a></p>
+                  <p>文章來源： <a v-bind:href="new.content_href" target="_blank">{{new.content_author}}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="area area_brand" id="brand_into">
+          <div class="brand"> 
+            <div class="brand_img"> <img src="./image/teabush2.jpg" alt=""></div>
+            <div class="brand_text">
+              <h2>品牌介紹</h2>
+              <p>唐代詩人皮日休《寒日書齋即事》一詩有云：「深夜數甌唯柏葉，清晨一器是雲華。」。好山好水出好茶，植於山顛雲霧處之茶，無染上凡間之濁，可稱上茶中之上品。</p>
+            </div>
+          </div>
+        </section>
+        <div class="productInfo"> 
+          <section class="area" id="products"> 
+            <h2>商品資訊</h2>
+            <ul id="tabs">
+              <li v-for="class in teadata">{{class.className}}</li>
+            </ul>
+            <div id="tab_inner">
+              <div class="tab_content" v-for="(classid, class) in teadata"> <span class="slidebtn slidebtn_left">&#139;</span><span class="slidebtn slidebtn_right">&#155;</span>
+                <div class="product_list">
+                  <div class="item product_item" v-for="(teaid, tea) in class.products" v-bind:class="class.tabid">
+                    <div class="product_img"><img v-bind:src="tea.img[0]" alt="{{tea.name}}">
+                      <div class="product_addcart" v-on:click="openProductInfo(classid, teaid);">購買</div>
+                    </div>
+                    <div class="product_text">
+                      <h5 v-on:click="openProductInfo(classid, teaid);">{{tea.name}}</h5>
+                      <p>NT.{{tea.price}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <dialog id="modal" style="display:none;">
+            <div class="modalBg"> </div>
+            <div class="teaInfo">
+              <div class="closePage" v-on:click="closeProductInfo();">
+                <div class="line line1"> </div>
+                <div class="line line2"></div>
+              </div>
+              <div class="infoLeft">
+                <div class="infoImg">
+                  <div class="imgBig"><img id="bigimg" src="./image/teapot1.jpg" alt=""></div>
+                  <div class="imgThumbnail">
+                    <div class="thumbnailimg"><img src="./image/teapot1.jpg" alt=""></div>
+                    <div class="thumbnailimg"><img src="./image/teapot2.jpg" alt=""></div>
+                    <div class="thumbnailimg"><img src="./image/teapot1.jpg" alt=""></div>
+                  </div>
+                </div>
+              </div>
+              <div class="infoRight">
+                <div class="infoText"> 
+                  <h2>蜜香紅茶</h2>
+                  <p class="teaPrice">NT$ 1,300</p>
+                  <p class="teaIntro">嚴選蜜香紅茶，茶包20入</p>
+                  <p class="teaIntro">全館滿NT$ 5,000免運費</p>
+                  <div class="addQty"> 
+                    <div class="txt subbtn">-</div>
+                    <input class="txt addnum" type="text" value="1" oninput="value=value.replace(/[^\d]/g,'');">
+                    <div class="txt addbtn">+</div>
+                  </div>
+                  <button class="addCartbtn">加入購物車</button>
+                </div>
+              </div>
+            </div>
+          </dialog>
+        </div>
+        <div class="shopinfoContact area">
+          <section id="shop_info"> 
+            <h2>店舖資訊</h2>
+            <p>電話：04-00000000</p>
+            <p>傳真：04-00000000 </p>
+            <p>營業時間：周一至周六 上午10:00至下午7:30</p>
+            <p>聯絡信箱：service@teashop.com</p>
+            <p>地址：400 台中市XX區XX路XX號  </p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465744.23062635935!2d120.67567951144393!3d24.219846774163198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917dff97922ef%3A0x87523ee47ea6447f!2z5Y-w5Lit5biC!5e0!3m2!1szh-TW!2stw!4v1624064257091!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
+          </section>
+          <section id="contact"> 
+            <h2>客服表單</h2>
+            <div class="contact_all">
+              <select id="contact_class" name="contact_class">
+                <option value="1">商品相關</option>
+                <option value="2">訂單相關</option>
+                <option value="3">退換貨</option>
+              </select>
+              <input id="contact_subject" type="text" name="subject" placeholder="主旨">
+              <input id="user_email" type="email" name="email" placeholder="信箱" required>
+              <input id="user_name" type="text" name="name" placeholder="姓名" required>
+              <input id="user_phone" type="tel" name="phone" placeholder="電話" required>
+              <textarea id="contact_content" name="content" placeholder="內容" rows="6" required></textarea>
+              <button class="btn_submit">送出</button>
+              <button class="btn_reset" onclick="formReset();">重填</button>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer> 
+        <div class="footer_content"> 
+          <p>copyright © 資料、圖片、文章來源皆來自網路，僅用來做為學習用途。</p>
+          <p>圖片來自<a href="https://unsplash.com/" target="_blank">Unsplash</a>，文章來自<a href="https://zh.wikipedia.org" target="_blank">維基百科</a></p>
+        </div>
+      </footer>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
+      <script type="text/javascript" src="./js/teadata.js"> </script>
+      <script type="text/javascript" src="./js/newsdata.js"> </script>
+      <script type="text/javascript" src="./js/script.js"> </script>
+    </div>
+  </body>
+</html>
