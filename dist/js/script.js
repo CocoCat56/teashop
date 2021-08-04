@@ -163,7 +163,6 @@ for ( let i = 0; i < slide_left.length; i++) {
         for (const a of slide_item) {
             a.style.left = '-' + (mul * click_count[i]) + '%';
         }
-        console.log(mul);
     });
 }
 
