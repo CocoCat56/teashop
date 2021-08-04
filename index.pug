@@ -97,13 +97,13 @@ html(lang="en")
                     span.slidebtn.slidebtn_left &#139;
                     span.slidebtn.slidebtn_right &#155;
                     .news
-                        .item.item1(v-for="new in news")
+                        .item.item1(v-for="knowl in teaknowls")
                             .news_img
-                                img(v-bind:src="new.img" v-bind:alt="new.title")
+                                img(v-bind:src="knowl.img" v-bind:alt="knowl.title")
                             .news_title 
-                                h5 {{new.title}}
-                                span {{new.date}}
-                            p {{new.content.substring(0, 20)}}...
+                                h5 {{knowl.title}}
+                                span {{knowl.date}}
+                            p {{knowl.content.substring(0, 20)}}...
                             .data_about
                                 i.fas.fa-leaf
                                 .about_text(style="display: none;")
@@ -112,9 +112,9 @@ html(lang="en")
                                     svg(version="1.1" id="triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 70.95 12.21" style="enable-background:new 0 0 70.95 12.21;" xml:space="preserve")
                                         polygon.triangle(points="70.81,0.03 60.81,12.21 56.05,0 ")
                                     p 圖片來源： 
-                                        a(v-bind:href="new.img_href" target="_blank") {{new.img_web}} 
+                                        a(v-bind:href="knowl.img_href" target="_blank") {{knowl.img_web}} 
                                     p 文章來源： 
-                                        a(v-bind:href="new.content_href" target="_blank") {{new.content_author}}
+                                        a(v-bind:href="knowl.content_href" target="_blank") {{knowl.content_author}}
                 //- 品牌介紹
                 section#brand_into.area.area_brand
                     .brand 
@@ -128,15 +128,15 @@ html(lang="en")
                     section#products.area 
                         h2 商品資訊
                         ul#tabs
-                            li(v-for="class in teadata") {{class.className}}
+                            li(v-for="item in teadata") {{item.className}}
                         #tab_inner
-                            .tab_content(v-for="(classid, class) in teadata") 
+                            .tab_content(v-for="(teaclass, classid) in teadata") 
                                 span.slidebtn.slidebtn_left &#139;
                                 span.slidebtn.slidebtn_right &#155;
                                 .product_list
-                                    .item.product_item(v-for="(teaid, tea) in class.products" v-bind:class="class.tabid")
+                                    .item.product_item(v-for="(tea, teaid) in teaclass.products" v-bind:class="teaclass.tabid")
                                         .product_img
-                                            img(v-bind:src="tea.img[0]" alt="{{tea.name}}")
+                                            img(v-bind:src="tea.img[0]" v-bind:alt="tea.name")
                                             .product_addcart(v-on:click="openProductInfo(classid, teaid);") 購買
                                         .product_text
                                             h5(v-on:click="openProductInfo(classid, teaid);") {{tea.name}}
@@ -203,7 +203,7 @@ html(lang="en")
                         a(href="https://unsplash.com/" target="_blank") Unsplash
                         |，文章來自
                         a(href="https://zh.wikipedia.org" target="_blank") 維基百科
-            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js")
-            script(type="text/javascript" src="./js/teadata.js") 
+            script(type="text/javascript" src="./js/vue.global.js") 
             script(type="text/javascript" src="./js/newsdata.js") 
+            script(type="text/javascript" src="./js/teadata.js") 
             script(type="text/javascript" src="./js/script.js") 

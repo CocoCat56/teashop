@@ -1,4 +1,4 @@
-let newsdata = [
+let data = [
     {
         title: "茶文化",
         date: "2021-06-20",
@@ -60,10 +60,10 @@ let newsdata = [
         content_href: "https://zh.wikipedia.org/wiki/%E7%B6%A0%E8%8C%B6"
     }
 ];
-
-let news = new Vue({
-    el: "#news",
-    data: {
-        news: newsdata
+let teaknowls = Vue.createApp({
+    data(){
+        return {
+            teaknowls: data
+        }
     }
-});
+}).mount('#news');

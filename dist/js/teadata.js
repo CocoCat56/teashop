@@ -90,11 +90,11 @@ let teadata = [
         }]
     }
 ];
-
-let productInfo = new Vue({
-    el: ".productInfo",
-    data: {
-        teadata: teadata
+let productInfo = Vue.createApp({
+    data() {
+        return {
+            teadata: teadata
+        }
     },
     methods: {
         openProductInfo: function (classid, teaid) {
@@ -182,4 +182,4 @@ let productInfo = new Vue({
             }, 260);
         }
     }
-});
+}).mount('.productInfo');
