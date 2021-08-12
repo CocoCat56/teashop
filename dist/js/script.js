@@ -1,5 +1,4 @@
 var body = document.querySelector("body");
-body.classList.add("loading");
 window.onload = () => {
     body.classList.remove("loading");
 }
