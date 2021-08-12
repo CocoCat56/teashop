@@ -1,3 +1,8 @@
+var body = document.querySelector("body");
+body.classList.add("loading");
+window.onload = () => {
+    body.classList.remove("loading");
+}
 // banner
 var counter = 1;
 setInterval(function () {
